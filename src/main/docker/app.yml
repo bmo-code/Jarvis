@@ -1,0 +1,14 @@
+version: '2'
+services:
+    jarvis-app:
+        image: jarvis
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://jarvis-postgresql:5432/Jarvis
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jarvis-postgresql:
+        extends:
+            file: postgresql.yml
+            service: jarvis-postgresql
